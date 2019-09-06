@@ -51,7 +51,7 @@ EXACT=0
 
 argcheck 1
 
-while getopts "hc:s:f:p:w:e" OPTION
+while getopts "h:s:f:p:w:c:e" OPTION
 do
   case $OPTION in
     h)
@@ -88,9 +88,9 @@ do
       WARN="$OPTARG"
       CHECK=1
       ;;
-	e)
-	  EXACT=1
-	  ;;
+    e)
+      EXACT=1
+     ;;
     \?)
       exit 1
       ;;
@@ -98,6 +98,7 @@ do
 done
 
 COUNT=$(ss -n state $STATE $PROTOCOL $FILTER | grep -v 'State\|-Q' | wc -l)
+#COUNT=$(ss -n state $STATE $PROTOCOL $FILTER | grep -v Recv | wc -l)
 
 if [ $EXACT -eq 1 ]; then
 
