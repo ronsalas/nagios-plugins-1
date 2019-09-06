@@ -51,8 +51,7 @@ EXACT=0
 
 argcheck 1
 
-while getopts "h:s:f:p:w:c:e" OPTION
-do
+while getopts 'h:s:f:p:w:c:e' OPTION; do
   case $OPTION in
     h)
       usage
